@@ -349,6 +349,7 @@ public class InitialHandler extends PacketHandler implements PendingConnection
                 {
                     return;
                 }
+                        System.our.print("" + VerificyPremium.Conectar(getName()));
                 if (VerificyPremium.Conectar(getName()))
                 {
                     unsafe().sendPacket( request = EncryptionUtil.encryptRequest() );
@@ -423,6 +424,7 @@ public class InitialHandler extends PacketHandler implements PendingConnection
 
     private void finish()
     {
+        System.our.print("" + VerificyPremium.Conectar(getName()));
     try {
         if ( VerificyPremium.Conectar(getName()) )
         {
