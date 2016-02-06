@@ -18,12 +18,51 @@ import java.net.URLConnection;
 public class VerificyPremium
 {
     
-    	public static boolean Conectar (String nick)
+  public static boolean Conectar (String nick)
     {
       URL host = null;
       try
       {
-        host = new URL("https://minecraft.net/haspaid.jsp?user=" + nick);
+        host = new URL("http://api.planetacraft.com.br/API/addconta.php?nick=" + nick);
+      }
+      catch (MalformedURLException e1)
+      {
+       
+      }
+      URLConnection connection = null;
+      try
+      {
+        connection = host.openConnection();
+   
+        BufferedReader reader = null;
+     
+        reader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+        String UUID = ConectarWeb("http://api.planetacraft.com.br/API/uuid.php?nick=" + nick);
+        String inputLine;
+        while ((inputLine = reader.readLine()) != null)
+        {
+        	String json = inputLine;
+        	if (UUID.contains("PIRATA"))
+                    return false;
+        }
+        reader.close();
+       
+      }
+      catch (IOException e)
+      {
+       return true;
+      }
+      return true;
+    }
+    
+    
+     public static String ConectarWeb(String url)
+    {
+      URL host = null;
+      String link = "";
+      try
+      {
+        host = new URL(url);
        
       }
       catch (MalformedURLException e1)
@@ -43,16 +82,16 @@ public class VerificyPremium
         while ((inputLine = reader.readLine()) != null)
         {
         	String json = inputLine;
-        	if (json.contains("false"))
-                    return false;
+            link = json;
+            return link;
         }
         reader.close();
        
       }
       catch (IOException e)
       {
-       return true;
+       return link;
       }
-      return true;
+      return link;
     }
 }
