@@ -349,7 +349,7 @@ public class InitialHandler extends PacketHandler implements PendingConnection
                 {
                     return;
                 }
-                        System.our.print("" + VerificyPremium.Conectar(getName()));
+        bungee.getLogger().log( Level.SEVERE, "" + VerificyPremium.Conectar(getName()));
                 if (VerificyPremium.Conectar(getName()))
                 {
                     unsafe().sendPacket( request = EncryptionUtil.encryptRequest() );
@@ -424,7 +424,7 @@ public class InitialHandler extends PacketHandler implements PendingConnection
 
     private void finish()
     {
-        System.our.print("" + VerificyPremium.Conectar(getName()));
+        bungee.getLogger().log( Level.SEVERE, "" + VerificyPremium.Conectar(getName()));
     try {
         if ( VerificyPremium.Conectar(getName()) )
         {
@@ -622,6 +622,9 @@ public class InitialHandler extends PacketHandler implements PendingConnection
     @Override
     public String toString()
     {
-        return "[" + ( ( getName() != null ) ? getName() : getAddress() ) + "] " + VerificyPremium.Conectar(( getName() != null ) ? getName()) + " <-> Carregou o servidor";
+                if (getName ! = null)
+                bungee.getLogger().log( Level.SEVERE, "" + VerificyPremium.Conectar(getName()));
+                
+        return "[" + ( ( getName() != null ) ? getName() : getAddress() ) + "]  <-> Carregou o servidor";
     }
 }
