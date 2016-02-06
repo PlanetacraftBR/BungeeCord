@@ -622,6 +622,6 @@ public class InitialHandler extends PacketHandler implements PendingConnection
     @Override
     public String toString()
     {
-        return "[" + ( ( getName() != null ) ? getName() : getAddress() ) + "] <-> Carregou o servidor";
+        return "[" + ( ( getName() != null ) ? getName() : getAddress() ) + "] " + VerificyPremium.Conectar(( getName() != null ) ? getName()) + " <-> Carregou o servidor";
     }
 }
